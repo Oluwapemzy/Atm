@@ -12,9 +12,19 @@ def register():
         print("INVALID name.\nName must al least have 3 characters")
 
 
-def deposit(arr):
+def deposit(arr,name):
     for i in range(len(arr)):
-        print(arr[i])
+        # print(arr[i].keys())
+        
+        if name in arr[i].keys():
+            print("How much?")
+            depositamount = input("> amount ")
+            break
+
+        else:
+            pass
+            # print("name not found")
+            
 
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
@@ -42,9 +52,9 @@ while True:
     # Deposit
     elif choic == "3":
         print("your name? ")
-        acctodepo = input("name")
-        print("How much?")
-        depositamount = input("> amount ")
+        acctodepo = input("name\n")
+        # print("How much?")
+        # depositamount = input("> amount ")
 
         deposit(customers, acctodepo)
         choic = input("> your choice\n")
