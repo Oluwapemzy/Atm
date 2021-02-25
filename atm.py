@@ -1,7 +1,7 @@
 customers = []
 
-# function to register a customer
 
+# function to register a customer
 def register():
     name = input("your name? ")
     age = int(input("your age? "))
@@ -9,22 +9,34 @@ def register():
         print(f"{name}, you have successfully registered")
         customers.append({name:[age, 0]}) 
     else:
-        print("INVALID name.\nName must al least have 3 characters")
+       print("INVALID name.\nName must al least have 3 characters")
 
 
+# Deposit function
 def deposit(arr,name):
     for i in range(len(arr)):
         # print(arr[i].keys())
         
         if name in arr[i].keys():
-            print("How much?")
-            depositamount = input("> amount ")
+            print("Valid\nHow much do you want to deposit ? ")
+            depositamount = int(input("> amount "))
+            customers[i][name][1] += depositamount
             break
 
         else:
             pass
             # print("name not found")
             
+
+# Function that performs withdraw
+def withdraw(wdFrm):
+    for j in range(len(customers)):
+        print(j)
+
+
+# Amount user has
+def checkBalance():
+    print("balance is")
 
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
@@ -45,16 +57,17 @@ while True:
 
     # Withdraw
     elif choic == "2":
+        accname = input("the account you want to withdraw from: ")
         print("Your pin? ")
         pininput = input("> ")
+        withdraw(accname)
         choic = input("> your choice\n")
+        
     
     # Deposit
     elif choic == "3":
         print("your name? ")
         acctodepo = input("name\n")
-        # print("How much?")
-        # depositamount = input("> amount ")
 
         deposit(customers, acctodepo)
         choic = input("> your choice\n")
