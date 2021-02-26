@@ -19,7 +19,7 @@ def deposit(arr,name):
         
         if name in arr[i].keys():
             print("Valid\nHow much do you want to deposit ? ")
-            depositamount = int(input("> amount "))
+            depositamount = int(input("> "))
             customers[i][name][1] += depositamount
             break
 
@@ -32,6 +32,9 @@ def deposit(arr,name):
 def withdraw(wdFrm):
     for j in range(len(customers)):
         print(customers[j])
+        if wdFrm in customers[j].keys():
+            print(customers[j][wdFrm])
+            # break
 
 
 # Amount user has
@@ -39,14 +42,12 @@ def checkBalance():
     print("balance is")
 
 
+
+
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
 print("What would you like to do at our bank?\n1. Register\n2. Withdraw\n3. Deposit\n4. Exit")
-choic = input("> your choice\n")
-
-
-
-
+choic = input("> your choice ")
 
 
 
@@ -54,7 +55,7 @@ while True:
     # register
     if choic == "1":
         register()
-        choic = input("> your choice\n")
+        choic = input("> your choice ")
 
     # Withdraw
     elif choic == "2":
@@ -62,29 +63,26 @@ while True:
         print("Your pin? ")
         pininput = input("> ")
         withdraw(accname)
-        choic = input("> your choice\n")
+        choic = input("> your choice ")
         
     
     # Deposit
     elif choic == "3":
         print("your name? ")
-        acctodepo = input("name\n")
+        acctodepo = input("> ")
 
         deposit(customers, acctodepo)
-        choic = input("> your choice\n")
+        choic = input("> your choice ")
     
     # quit
     elif choic == "4":
         print("thank you choosing Premier Bank.")
         break
-
     
     else:
         break
 
-
 else:
     print("nno")
-
 
 print(customers)
