@@ -31,12 +31,13 @@ def deposit(arr,name):
 # Function that performs withdraw
 def withdraw(wdFrm):
     for j in range(len(customers)):
-        print(j)
+        print(customers[j])
 
 
 # Amount user has
 def checkBalance():
     print("balance is")
+
 
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
