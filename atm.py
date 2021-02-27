@@ -5,9 +5,11 @@ customers = []
 def register():
     name = input("your name? ")
     age = int(input("your age? "))
+    choosepin = input("please choose a 4-digit pin ")
+    
     if len(name) >= 3:
         print(f"{name}, you have successfully registered")
-        customers.append({name:[age, 0]}) 
+        customers.append({name:[age, 0, {'pinchosen':choosepin}]}) 
     else:
        print("INVALID name.\nName must al least have 3 characters")
 
@@ -31,11 +33,22 @@ def deposit(arr,name):
 # Function that performs withdraw
 def withdraw(wdFrm):
     for j in range(len(customers)):
-        print(customers[j])
+        # print(customers[j])
         if wdFrm in customers[j].keys():
             print(customers[j][wdFrm])
+            wdamount = int(input("Amount\n > "))
+            print("Your pin? ")
+            pininput = input("> ")
+            if pininput == customers[j][wdFrm][2]['pinchosen']:
+                print("valid")
+                customers[j][wdFrm][1] = customers[j][name][1] - wdamount
+            else:
+                print("invalid pin")
+                pass
             # break
-
+        else:
+            # print("invalid name")
+            pass
 
 # Amount user has
 def checkBalance():
@@ -52,6 +65,7 @@ choic = input("> your choice ")
 
 
 while True:
+
     # register
     if choic == "1":
         register()
@@ -59,9 +73,9 @@ while True:
 
     # Withdraw
     elif choic == "2":
+
         accname = input("the account you want to withdraw from: ")
-        print("Your pin? ")
-        pininput = input("> ")
+        
         withdraw(accname)
         choic = input("> your choice ")
         
