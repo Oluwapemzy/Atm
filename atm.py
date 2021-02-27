@@ -1,4 +1,4 @@
-customers = [{'ojo' :[30, 30000, {'pinchosen': 1970}]}, {'bade' :[33, 20000, {'pinchosen': 1990}]}]
+customers = [{'ojo' :[30, 30000, {'pinchosen': "1270"}]}, {'bade' :[33, 20000, {'pinchosen': "1990"}]}, {'setemi' :[23, 15000, {'pinchosen': "1690"}]}]
 
 
 # function to register a customer
@@ -28,14 +28,15 @@ def deposit(arr,name):
         else:
             pass
             # print("name not found")
-            
+
+    return    
 
 # Function that performs withdraw
 def withdraw(wdFrm):
     for j in range(len(customers)):
         # print(customers[j])
         if wdFrm in customers[j].keys():
-            print(customers[j][wdFrm])
+            # print(customers[j][wdFrm])
             wdamount = int(input("Amount\n > "))
             print("Your pin? ")
             pininput = input("> ")
@@ -49,13 +50,27 @@ def withdraw(wdFrm):
         else:
             # print("invalid name")
             pass
+    return
+
 
 # Amount user has
 def checkBalance(detail_to_check):
-    print("balance is")
-
-
-
+    # print("balance is")
+    for k in range(len(customers)):
+        if detail_to_check in customers[k].keys():
+            print("Your pin? ")
+            pininput = input("> ")
+            
+           
+            if pininput == customers[k][detail_to_check][2]['pinchosen']:
+                print("valid")
+                print(f"Your balance, {detail_to_check} is #"+ str(customers[k][detail_to_check][1]))
+            else:
+                print("invalid pin")
+                pass
+        else:
+            pass
+    return
 
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
@@ -63,9 +78,7 @@ print("What would you like to do at our bank?\n1. Register\n2. Withdraw\n3. Depo
 choic = input("> your choice ")
 
 
-
 while True:
-
     # register
     if choic == "1":
         register()
@@ -79,7 +92,6 @@ while True:
         withdraw(accname)
         choic = input("> your choice ")
         
-    
     # Deposit
     elif choic == "3":
         print("your name? ")
@@ -93,11 +105,14 @@ while True:
         print("Account Name")
         accdetail = input("> ")
         checkBalance(accdetail)
+        choic = input("> your choice ")
 
     # quit
     elif choic == "5":
         print("thank you choosing Premier Bank.")
         break
+
+
     else:
         break
 
