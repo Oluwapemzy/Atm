@@ -1,4 +1,4 @@
-customers = []
+customers = [{'ojo' :[30, 30000, {'pinchosen': 1970}]}, {'bade' :[33, 20000, {'pinchosen': 1990}]}]
 
 
 # function to register a customer
@@ -41,7 +41,7 @@ def withdraw(wdFrm):
             pininput = input("> ")
             if pininput == customers[j][wdFrm][2]['pinchosen']:
                 print("valid")
-                customers[j][wdFrm][1] = customers[j][name][1] - wdamount
+                customers[j][wdFrm][1] = customers[j][wdFrm][1] - wdamount
             else:
                 print("invalid pin")
                 pass
@@ -51,7 +51,7 @@ def withdraw(wdFrm):
             pass
 
 # Amount user has
-def checkBalance():
+def checkBalance(detail_to_check):
     print("balance is")
 
 
@@ -59,7 +59,7 @@ def checkBalance():
 
 print("Welcome to the Premier Bank")
 print("You have to register before using Premier bank Atm")
-print("What would you like to do at our bank?\n1. Register\n2. Withdraw\n3. Deposit\n4. Exit")
+print("What would you like to do at our bank?\n1. Register\n2. Withdraw\n3. Deposit\n4. Check balance\n5. Exit")
 choic = input("> your choice ")
 
 
@@ -88,11 +88,16 @@ while True:
         deposit(customers, acctodepo)
         choic = input("> your choice ")
     
-    # quit
+    # Balance check
     elif choic == "4":
+        print("Account Name")
+        accdetail = input("> ")
+        checkBalance(accdetail)
+
+    # quit
+    elif choic == "5":
         print("thank you choosing Premier Bank.")
         break
-    
     else:
         break
 
